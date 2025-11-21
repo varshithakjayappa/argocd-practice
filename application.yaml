@@ -4,7 +4,8 @@ metadata:
   name: guestbook-manifest
   namespace: argocd
 spec:
-  project: project-1
+  #project: project-1
+  project: default
   source:
     #directory:
      # include: guestbook-ui-svc.yaml
