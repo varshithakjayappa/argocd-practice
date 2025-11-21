@@ -1,19 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: guestbook-manifest
+  name: guestbook
   namespace: argocd
 spec:
-  project: project-1
+  project: default
   source:
-    #directory:
-     # include: guestbook-ui-svc.yaml
-     # include: '{guestbook-ui-svc.yaml,guestbook-ui-deployment.yaml}'
-     # exclude: guestbook-ui-svc.yaml 
+    helm:
+     releaseName: application-helm
+     valueFiles:
+       - values-production.yaml
     repoURL: https://github.com/varshithakjayappa/argocd-practice.git
     targetRevision: main
-    path: guestbook-manifest
+    path: helm-guestbook
   destination:
     server: https://kubernetes.default.svc
     namespace: default
-
